@@ -1,21 +1,14 @@
 const express = require('express');
 const path = require('path');
-const members = require('./members');
-
+const route = require('./route')
 const app = express();
+const mongoose = require('mongoose');
+
+const db = require("./models");
 
 
-// creatring a page more like sending a htmlfile
-// app.get("/", (req,res) => {
-//     res.sendFile(path.join(__dirname, 'public', 'index.html'));
-//     //res.send("hello world")
-// })
-
-// set a static folder so that there is no ned for routing for every single page I create.
 app.use(express.static(path.join(__dirname, 'public')))
 
-// route gets all members
-app.get('/api/members', (req, res) => res.json(members))
 
 const PORT = process.env.PORT || 5000;
 
